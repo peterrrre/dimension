@@ -113,8 +113,8 @@ cleanup
 
 # stand up nodeos cluster
 launcherOpts="-p $pnodes -n $total_nodes -s $topo -d $delay"
-echo Launcher options: --nodeos \"--plugin eosio::wallet_api_plugin\" $launcherOpts
-programs/eosio-launcher/eosio-launcher --nodeos "--plugin eosio::wallet_api_plugin" $launcherOpts
+echo Launcher options: --nodeon \"--plugin eosio::wallet_api_plugin\" $launcherOpts
+programs/eosio-launcher/eosio-launcher --nodeon "--plugin eosio::wallet_api_plugin" $launcherOpts
 sleep 7
 
 startPort=8888

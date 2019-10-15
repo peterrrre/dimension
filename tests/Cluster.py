@@ -163,7 +163,7 @@ class Cluster(object):
             nodeosArgs += " --contracts-console"
 
         if nodeosArgs:
-            cmdArr.append("--nodeos")
+            cmdArr.append("--nodeon")
             cmdArr.append(nodeosArgs)
 
         if specificExtraNodeosArgs is not None:
@@ -173,7 +173,7 @@ class Cluster(object):
                 assert(isinstance(arg, str))
                 cmdArr.append("--specific-num")
                 cmdArr.append(str(nodeNum))
-                cmdArr.append("--specific-nodeos")
+                cmdArr.append("--specific-nodeon")
                 cmdArr.append(arg)
 
         cmdArr.append("--max-block-cpu-usage")

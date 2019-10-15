@@ -24,8 +24,8 @@ class Utils:
     EosWalletName="keosd"
     EosWalletPath="programs/keosd/"+ EosWalletName
 
-    EosServerName="nodeos"
-    EosServerPath="programs/nodeos/"+ EosServerName
+    EosServerName="nodeon"
+    EosServerPath="programs/nodeon/"+ EosServerName
 
     EosLauncherPath="programs/eosio-launcher/eosio-launcher"
     MongoPath="mongo"

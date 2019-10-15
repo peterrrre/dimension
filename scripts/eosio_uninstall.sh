@@ -10,7 +10,7 @@ binaries=(
    eosio-wast2wasm
    eosiocpp
    keosd
-   nodeos
+   nodeon
    eosio-applesdemo
 )
 
