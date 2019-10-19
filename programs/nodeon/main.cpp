@@ -87,8 +87,8 @@ int main(int argc, char** argv)
       app().set_version(eosio::nodeos::config::version);
 
       auto root = fc::app_path();
-      app().set_default_data_dir(root / "eosio/nodeon/data" );
-      app().set_default_config_dir(root / "eosio/nodeon/config" );
+      app().set_default_data_dir(root / "dimension/nodeon/data" );
+      app().set_default_config_dir(root / "dimension/nodeon/config" );
       http_plugin::set_defaults({
          .default_unix_socket_path = "",
          .default_http_port = 8888
