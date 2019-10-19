@@ -1,6 +1,6 @@
 #!/bin/bash
 ##########################################################################
-# This is the EOSIO automated install script for Linux and Mac OS.
+# This is the Dimension automated install script for Linux and Mac OS.
 # This file was downloaded from https://github.com/EOSIO/eos
 #
 # Copyright (c) 2017, Respective Authors all rights reserved.
@@ -15,7 +15,6 @@
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-#
 # The above copyright notice and this permission notice shall be included in
 # all copies or substantial portions of the Software.
 #
@@ -23,12 +22,8 @@
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-#
-# https://github.com/EOSIO/eos/blob/master/LICENSE
-##########################################################################
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM
+########################################################################
 
 VERSION=2.1 # Build script version
 CMAKE_BUILD_TYPE=Release
@@ -165,8 +160,6 @@ fi
 
 if [ ! -d "${REPO_ROOT}/.git" ]; then
    printf "\\nThis build script only works with sources cloned from git\\n"
-   printf "Please clone a new eos directory with 'git clone https://github.com/EOSIO/eos --recursive'\\n"
-   printf "See the wiki for instructions: https://github.com/EOSIO/eos/wiki\\n"
    exit 1
 fi
 
@@ -209,38 +202,38 @@ if [ "$ARCH" == "Linux" ]; then
    fi
    case "$OS_NAME" in
       "Amazon Linux AMI"|"Amazon Linux")
-         FILE="${REPO_ROOT}/scripts/eosio_build_amazon.sh"
+         FILE="${REPO_ROOT}/scripts/dimension_build_amazon.sh"
          CXX_COMPILER=g++
          C_COMPILER=gcc
       ;;
       "CentOS Linux")
-         FILE="${REPO_ROOT}/scripts/eosio_build_centos.sh"
+         FILE="${REPO_ROOT}/scripts/dimension_build_centos.sh"
          CXX_COMPILER=g++
          C_COMPILER=gcc
       ;;
       "elementary OS")
-         FILE="${REPO_ROOT}/scripts/eosio_build_ubuntu.sh"
+         FILE="${REPO_ROOT}/scripts/dimension_build_ubuntu.sh"
          CXX_COMPILER=clang++-4.0
          C_COMPILER=clang-4.0
       ;;
       "Fedora")
          export CPATH=/usr/include/llvm4.0:$CPATH # llvm4.0 for fedora package path inclusion
-         FILE="${REPO_ROOT}/scripts/eosio_build_fedora.sh"
+         FILE="${REPO_ROOT}/scripts/dimension_build_fedora.sh"
          CXX_COMPILER=g++
          C_COMPILER=gcc
       ;;
       "Linux Mint")
-         FILE="${REPO_ROOT}/scripts/eosio_build_ubuntu.sh"
+         FILE="${REPO_ROOT}/scripts/dimension_build_ubuntu.sh"
          CXX_COMPILER=clang++-4.0
          C_COMPILER=clang-4.0
       ;;
       "Ubuntu")
-         FILE="${REPO_ROOT}/scripts/eosio_build_ubuntu.sh"
+         FILE="${REPO_ROOT}/scripts/dimension_build_ubuntu.sh"
          CXX_COMPILER=clang++-4.0
          C_COMPILER=clang-4.0
       ;;
       "Debian GNU/Linux")
-         FILE="${REPO_ROOT}/scripts/eosio_build_ubuntu.sh"
+         FILE="${REPO_ROOT}/scripts/dimension_build_ubuntu.sh"
          CXX_COMPILER=clang++-4.0
          C_COMPILER=clang-4.0
       ;;
@@ -254,10 +247,10 @@ if [ "$ARCH" == "Darwin" ]; then
    # Check if cmake is already installed or not and use source install location
    if [ -z $CMAKE ]; then export CMAKE=/usr/local/bin/cmake; fi
    export OS_NAME=MacOSX
-   # opt/gettext: cleos requires Intl, which requires gettext; it's keg only though and we don't want to force linking: https://github.com/EOSIO/eos/issues/2240#issuecomment-396309884
+   # opt/gettext: cleon requires Intl, which requires gettext; it's keg only though and we don't want to force linking: https://github.com/EOSIO/eos/issues/2240#issuecomment-396309884
    # HOME/lib/cmake: mongo_db_plugin.cpp:25:10: fatal error: 'bsoncxx/builder/basic/kvp.hpp' file not found
    LOCAL_CMAKE_FLAGS="-DCMAKE_PREFIX_PATH=/usr/local/opt/gettext;$HOME/lib/cmake ${LOCAL_CMAKE_FLAGS}" 
-   FILE="${REPO_ROOT}/scripts/eosio_build_darwin.sh"
+   FILE="${REPO_ROOT}/scripts/dimension_build_darwin.sh"
    CXX_COMPILER=clang++
    C_COMPILER=clang
    OPENSSL_ROOT_DIR=/usr/local/opt/openssl
@@ -272,7 +265,7 @@ pushd $SRC_LOCATION &> /dev/null
 popd &> /dev/null
 
 printf "\\n========================================================================\\n"
-printf "======================= Starting EOSIO Build =======================\\n"
+printf "======================= Starting Dimension Build =======================\\n"
 printf "## CMAKE_BUILD_TYPE=%s\\n" "${CMAKE_BUILD_TYPE}"
 printf "## ENABLE_COVERAGE_TESTING=%s\\n" "${ENABLE_COVERAGE_TESTING}"
 
@@ -292,16 +285,10 @@ cd $REPO_ROOT
 
 TIME_END=$(( $(date -u +%s) - $TIME_BEGIN ))
 
-printf "${bldred}\n\n _______  _______  _______ _________ _______\n"
-printf '(  ____ \(  ___  )(  ____ \\\\__   __/(  ___  )\n'
-printf "| (    \/| (   ) || (    \/   ) (   | (   ) |\n"
-printf "| (__    | |   | || (_____    | |   | |   | |\n"
-printf "|  __)   | |   | |(_____  )   | |   | |   | |\n"
-printf "| (      | |   | |      ) |   | |   | |   | |\n"
-printf "| (____/\| (___) |/\____) |___) (___| (___) |\n"
-printf "(_______/(_______)\_______)\_______/(_______)\n\n${txtrst}"
+printf "${bldred}\n\n \n"
+printf "\n\n${txtrst}"
 
-printf "\\nEOSIO has been successfully built. %02d:%02d:%02d\\n" $(($TIME_END/3600)) $(($TIME_END%3600/60)) $(($TIME_END%60))
+printf "\\nDimension has been successfully built. %02d:%02d:%02d\\n\n\n\n" $(($TIME_END/3600)) $(($TIME_END%3600/60)) $(($TIME_END%60))
 printf "==============================================================================================\\n${bldred}"
 printf "(Optional) Testing Instructions:\\n"
 print_instructions
@@ -309,9 +296,4 @@ printf "${BIN_LOCATION}/mongod --dbpath ${MONGODB_DATA_LOCATION} -f ${MONGODB_CO
 printf "cd ./build && PATH=\$PATH:$HOME/opt/mongodb/bin make test\\n" # PATH is set as currently 'mongo' binary is required for the mongodb test
 printf "${txtrst}==============================================================================================\\n"
 printf "For more information:\\n"
-printf "EOSIO website: https://eos.io\\n"
-printf "EOSIO Telegram channel @ https://t.me/EOSProject\\n"
-printf "EOSIO resources: https://eos.io/resources/\\n"
-printf "EOSIO Stack Exchange: https://eosio.stackexchange.com\\n"
-printf "EOSIO wiki: https://github.com/EOSIO/eos/wiki\\n\\n\\n"
-
+printf "Dimension website: https://dimensionchain.io\\n"

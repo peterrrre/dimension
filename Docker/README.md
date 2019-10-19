@@ -58,36 +58,36 @@ docker run --name nodeos -v /path-to-data-dir:/opt/eosio/bin/data-dir -p 8888:88
 curl http://127.0.0.1:8888/v1/chain/get_info
 ```
 
-## Start both nodeos and keosd containers
+## Start both nodeos and keond containers
 
 ```bash
 docker volume create --name=nodeos-data-volume
-docker volume create --name=keosd-data-volume
+docker volume create --name=keond-data-volume
 docker-compose up -d
 ```
 
-After `docker-compose up -d`, two services named `nodeosd` and `keosd` will be started. nodeos service would expose ports 8888 and 9876 to the host. keosd service does not expose any port to the host, it is only accessible to cleos when running cleos is running inside the keosd container as described in "Execute cleos commands" section.
+After `docker-compose up -d`, two services named `nodeosd` and `keond` will be started. nodeos service would expose ports 8888 and 9876 to the host. keond service does not expose any port to the host, it is only accessible to cleon when running cleon is running inside the keond container as described in "Execute cleon commands" section.
 
-### Execute cleos commands
+### Execute cleon commands
 
-You can run the `cleos` commands via a bash alias.
+You can run the `cleon` commands via a bash alias.
 
 ```bash
-alias cleos='docker-compose exec keosd /opt/eosio/bin/cleos -u http://nodeosd:8888 --wallet-url http://localhost:8900'
-cleos get info
-cleos get account inita
+alias cleon='docker-compose exec keond /opt/eosio/bin/cleon -u http://nodeosd:8888 --wallet-url http://localhost:8900'
+cleon get info
+cleon get account inita
 ```
 
 Upload sample exchange contract
 
 ```bash
-cleos set contract exchange contracts/exchange/
+cleon set contract exchange contracts/exchange/
 ```
 
-If you don't need keosd afterwards, you can stop the keosd service using
+If you don't need keond afterwards, you can stop the keond service using
 
 ```bash
-docker-compose stop keosd
+docker-compose stop keond
 ```
 
 ### Develop/Build custom contracts
@@ -128,7 +128,7 @@ The data volume created by docker-compose can be deleted as follows:
 
 ```bash
 docker volume rm nodeos-data-volume
-docker volume rm keosd-data-volume
+docker volume rm keond-data-volume
 ```
 
 ### Docker Hub
@@ -144,7 +144,7 @@ Note: if you want to use the mongo db plugin, you have to enable it in your `dat
 ```
 # create volume
 docker volume create --name=nodeos-data-volume
-docker volume create --name=keosd-data-volume
+docker volume create --name=keond-data-volume
 # pull images and start containers
 docker-compose -f docker-compose-eosio-latest.yaml up -d
 # get chain info
