@@ -354,7 +354,7 @@ parser.add_argument('--private-Key', metavar='', help="EOSIO Private Key", defau
 parser.add_argument('--cleon', metavar='', help="Cleos command", default='../../build/programs/cleon/cleon --wallet-url http://127.0.0.1:6666 ')
 parser.add_argument('--nodeon', metavar='', help="Path to nodeon binary", default='../../build/programs/nodeon/nodeon')
 parser.add_argument('--keond', metavar='', help="Path to keond binary", default='../../build/programs/keond/keond')
-parser.add_argument('--contracts-dir', metavar='', help="Path to contracts directory", default='/home/h/test/eosio.contracts/build/contracts/')
+parser.add_argument('--contracts-dir', metavar='', help="Path to contracts directory", default='/home/zzk/eosio.contracts/build/contracts/')
 parser.add_argument('--nodes-dir', metavar='', help="Path to nodes directory", default='./nodes/')
 parser.add_argument('--genesis', metavar='', help="Path to genesis.json", default="./genesis.json")
 parser.add_argument('--wallet-dir', metavar='', help="Path to wallet directory", default='./wallet/')
