@@ -17,7 +17,7 @@
    cleon contains documentation for all of its commands. For a list of all commands known to cleon, simply run it with no arguments:
 ```
 $ ./cleon
-Command Line Interface to EOSIO Client
+Command Line Interface to Dimension Client
 Usage: programs/cleon/cleon [OPTIONS] SUBCOMMAND
 
 Options:
@@ -2288,7 +2288,7 @@ int main( int argc, char** argv ) {
    context = eosio::client::http::create_http_context();
    wallet_url = default_wallet_url;
 
-   CLI::App app{"Command Line Interface to EOSIO Client"};
+   CLI::App app{"Command Line Interface to Dimension Client"};
    app.require_subcommand();
    app.add_option( "-H,--host", obsoleted_option_host_port, localized("the host where nodeon is running") )->group("hidden");
    app.add_option( "-p,--port", obsoleted_option_host_port, localized("the port where nodeon is running") )->group("hidden");
